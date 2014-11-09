@@ -14,3 +14,8 @@ get '/stories/:story_id/chapters/:chapter_id' do
   @chapter = Chapter.find(params[:chapter_id])
   erb :chapter
 end
+
+delete '/stories/:story_id/chapters/:chapter_id/delete' do
+  Chapter.find(params[:chapter_id]).delete
+  redirect "/stories/#{params[:story_id]}"
+end

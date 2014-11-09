@@ -16,3 +16,8 @@ get '/stories/:story_id/chapters/:chapter_id/comments/:comment_id' do
   @comment = Comment.find(params[:comment_id])
   erb :comment
 end
+
+delete '/stories/:story_id/chapters/:chapter_id/comments/:comment_id/delete' do
+  Comment.find(params[:comment_id]).delete
+  redirect "/stories/#{params[:story_id]}/chapters/#{params[:chapter_id]}"
+end
