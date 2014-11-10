@@ -50,3 +50,7 @@ get '/users/:user_id' do
   erb :'user/user_public'
 end
 
+get '/users/:user_id/add' do
+  "LET's BE FRIENDS!!"
+end
+
