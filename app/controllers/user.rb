@@ -40,12 +40,17 @@ put '/users/:user_id/edit' do
 end
 
 get '/users/:user_id/delete' do
+  Story.where(:user_id => params[:user_id]).delete
   User.find(params[:user_id]).delete
   redirect '/logout'
 end
 
 get '/users/:user_id' do
-  user = User.find(params[:user_id])
-  "Public user profile page here for #{user.name} soon!"
+  @user = User.find(params[:user_id])
+  erb :'user/user_public'
+end
+
+get '/users/:user_id/add' do
+  "LET's BE FRIENDS!!"
 end
 
