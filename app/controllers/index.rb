@@ -1,9 +1,20 @@
 get '/' do
-  redirect '/dashboard'
+  if current_user
+    redirect '/dashboard'
+  else
+    erb :login
+  end
 end
 
 get '/dashboard' do
-  @stories = Story.all
-  erb :dashboard
+  if current_user
+    @user = User.find(session[:user_id])
+    @stories = Story.all
+    @user_stories = @user.stories
+    erb :dashboard
+  else
+    erb :login
+  end
 end
+
 
