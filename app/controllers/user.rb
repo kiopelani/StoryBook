@@ -51,6 +51,7 @@ get '/users/:user_id' do
 end
 
 get '/users/:user_id/add' do
-  "LET's BE FRIENDS!!"
+  Friend.create(:user_1 => params[:user_id], :user_2 => session[:user_id])
+  redirect '/dashboard'
 end
 
