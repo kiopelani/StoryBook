@@ -46,7 +46,8 @@ get '/users/:user_id/delete' do
 end
 
 get '/users/:user_id' do
-  @user = User.find(params[:user_id])
+  @current_user = User.find(session[:user_id])
+  @author = User.find(params[:user_id])
   erb :'user/user_public'
 end
 
@@ -55,3 +56,19 @@ get '/users/:user_id/add' do
   redirect '/dashboard'
 end
 
+
+get '/users/:user_id/friends/new/:friend_id' do
+  @user = User.find(params[:user_id])
+  @friend = User.find(params[:friend_id])
+  @user.friendships.create(:friend_id => params[:friend_id])
+  @friend.friendships.create(:friend_id => params[:user_id])
+  redirect "/users/#{params[:friend_id]}"
+end
+
+get '/users/:user_id/friends/:friend_id/delete' do
+  @user = User.find(params[:user_id])
+  @friend = User.find(params[:friend_id])
+  @user.friendships.find_by_friend_id(params[:friend_id]).delete
+  @friend.friendships.find_by_friend_id(params[:user_id]).delete
+  redirect "/users/#{params[:friend_id]}"
+end
