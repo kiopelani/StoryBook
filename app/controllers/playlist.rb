@@ -1,6 +1,4 @@
-after do
-  ActiveRecord::Base.clear_active_connections!
-end
+
 ####GO HERE FIRST ###
 get '/connect_to_soundcloud' do
   erb :soundcloud_start
