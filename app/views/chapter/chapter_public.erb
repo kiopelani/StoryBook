@@ -1,32 +1,33 @@
 
-<div class="chapter-header"><em> <%= "#{@chapter.title}" %></em></div>
+ <div class="chapter-title"><%= "#{@chapter.title}" %></div>
 
-<form action=<%="/stories/#{@story.id}/public/find_chapter"%> method="get">
-  Chapters: <select name="chapter">
-    <% @story.chapters.each do |chapter| %>
-    <option value=<%="#{chapter.id}"%>><%= "#{chapter.title}" %></option>
+ <div class="chapter-container">
+  <form action=<%="/stories/#{@story.id}/public/find_chapter"%> method="get">
+    Chapters: <select name="chapter">
+      <% @story.chapters.each do |chapter| %>
+      <option value=<%="#{chapter.id}"%>><%= "#{chapter.title}" %></option>
+      <% end %>
+    </select>
+    <input type="submit" value="Read!">
+  </form>
+
+  <div class="chapter-content">
+    <%= @chapter.content %>
+  </div>
+  <div class="comment-box">
+
+    <h3>Comments:</h3>
+    <ul>
+    <% @chapter.comments.each do |comment| %>
+      <li><a href=<%="/stories/#{@story.id}/chapters/#{@chapter.id}/comments/#{comment.id}"%>><%= comment.content %></a> -- <%= comment.user.name %></li>
     <% end %>
-  </select>
-  <input type="submit" value="Read!">
-</form>
-<a href=<%="/stories/#{@story.id}/public"%>>Back to Story</a>
+    </ul>
 
-<div id="chapter-content">
-  <%= @chapter.content %>
-</div>
-
-<div class="container">
-  <h3>Comments:</h3>
-  <ul>
-  <% @chapter.comments.each do |comment| %>
-    <li><a href=<%="/stories/#{@story.id}/chapters/#{@chapter.id}/comments/#{comment.id}"%>><%= comment.content %></a> -- <%= comment.user.name %></li>
-  <% end %>
-  </ul>
-
-  <a href=<%="/stories/#{@story.id}/chapters/#{@chapter.id}/comments/new"%>>Leave a Comment</a><br>
-</div>
-
-
-
-<!-- go to next chapter link -->
-<!-- go to next chapter link -->
+    <form action="<%="/stories/#{@story.id}/chapters/#{@chapter.id}/comments/new"%>">
+      <input class="start-story" type="submit" value ="Leave a Comment"</input>
+    </form>
+  </div>
+    <form action="<%="/stories/#{@story.id}/public"%>">
+      <input class="start-story" type="submit" value ="Back to Story"</input>
+    </form>
+  </div>

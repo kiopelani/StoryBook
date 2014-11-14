@@ -7,6 +7,6 @@
 <form action=<%="/stories/#{@story.id}/chapters/new"%> method="post">
   <input type="integer" name="chapter[chapter_number]" value=<%="#{@story.chapters.count + 1}"%>>
   <input type="string" name="chapter[title]" placeholder="title"><br>
-  <textarea id="chapter-input" name="chapter[content]">Your chapter here!</textarea><br>
+  <textarea style="width: 80%; height: 400px" name="chapter[content]">Your chapter here!</textarea><br>
   <input type="submit" value="Create!">
 </form>

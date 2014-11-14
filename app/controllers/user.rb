@@ -1,10 +1,14 @@
 post '/login' do
-  if User.find_by_email_and_password(params[:email], params[:password])
-    @user = User.find_by_email_and_password(params[:email], params[:password])
-    session[:user_id] = @user.id
-    redirect '/'
+  if User.find_by_email(params[:email])
+    @user = User.find_by_email(params[:email])
+    if @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect '/'
+    else
+       erb :error, :locals => {:message => "Incorrect password."}
+    end
   else
-    erb :error, :locals => {:message => "We don't have that email and password combo in our system."}
+    erb :error, :locals => {:message => "We don't have that email in our system."}
   end
 end
 
@@ -20,6 +24,7 @@ end
 post '/users/new' do
   user = User.new(params[:user])
   if user.save
+    user.update_attributes(:password_hash => BCrypt::Password.create(params[:password]))
     @user = User.find_by(:email => params[:user][:email])
     session[:user_id] = @user.id
     Pony.mail(:to => "#{@user.email}", :from => '<noreply@storybook.com>', :subject => 'Welcome to Storybook!', :body => "Welcome to Storybook, #{@user.name}! http://localhost:9393/dashboard \n \nKEEP WRITING! <3 Storybook")
@@ -29,6 +34,12 @@ post '/users/new' do
   end
 end
 
+get '/users/search' do
+  @results = User.where("#{:name} LIKE (?)", "%#{params[:name]}%")
+  erb :search_results
+end
+
+
 get '/users/:user_id/edit' do
   @user = User.find(params[:user_id])
   erb :'user/user_edit'
@@ -37,6 +48,7 @@ end
 put '/users/:user_id/edit' do
   user = User.find(params[:user_id])
   user.update_attributes(params[:user])
+  user.update_attributes(:password_hash => BCrypt::Password.create(params[:password]))
   redirect '/'
 end
 
