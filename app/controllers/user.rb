@@ -1,3 +1,7 @@
+after do
+  ActiveRecord::Base.clear_active_connections!
+end
+
 post '/login' do
   if User.find_by_email(params[:email])
     @user = User.find_by_email(params[:email])

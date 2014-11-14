@@ -1,3 +1,7 @@
+after do
+  ActiveRecord::Base.clear_active_connections!
+end
+
 get '/stories/:story_id/chapters/new' do
   @story = Story.find(params[:story_id])
   erb :'chapter/chapter_new'

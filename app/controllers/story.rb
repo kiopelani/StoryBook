@@ -1,3 +1,7 @@
+after do
+  ActiveRecord::Base.clear_active_connections!
+end
+
 get '/stories/new' do
   erb :'story/story_new'
 end

@@ -1,3 +1,7 @@
+after do
+  ActiveRecord::Base.clear_active_connections!
+end
+
 get '/stories/:story_id/chapters/:chapter_id/comments/new' do
   @story = Story.find(params[:story_id])
   @chapter = Chapter.find(params[:chapter_id])
