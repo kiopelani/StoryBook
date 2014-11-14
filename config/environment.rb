@@ -26,6 +26,8 @@ require 'dotenv'
 
 require 'bcrypt'
 
+require 'thin'
+
 Dotenv.load
 
 # Some helper constants for path-centric logic

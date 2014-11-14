@@ -23,6 +23,8 @@ gem 'dotenv'
 
 gem 'bcrypt-ruby'
 
+gem 'thin'
+
 group :test do
   gem 'shoulda-matchers'
   gem 'rack-test'
