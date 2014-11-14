@@ -12,42 +12,48 @@
   -->
   <link rel="stylesheet" href="/css/application.css">
 
-  <link href="css/bootstrap.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+
+<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow|Calligraffitti|Oswald|Open+Sans+Condensed:300|Pathway+Gothic+One' rel='stylesheet' type='text/css'>
+    <!-- Custom CSS -->
 
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
+  <script src="js/bootstrap.min.js"></script>
 
   <title>Storybook</title>
 </head>
 <body>
-  <div class="welcome" style="text-align: center">
-  STORYBOOK
-  <div class="sub-welcome">
-    <em>Your virtual writing desk</em>
+  <div class="header welcome-container">
+    <div class="brand">
+      STORYBOOK
+    </div>
+    <div class="tagline">
+      Your virtual writing desk
+    </div>
   </div>
-</div>
-  <nav>
-        <% if current_user %>
 
-    <ul class="nav masthead-nav">
-      <li><a href="/dashboard">HOME</a></li>
-      <li><a href="/">STORIES</a></li>
-      <li><a href="#">FRIENDS</a></li>
-      <li><a href=<%="/users/#{session[:user_id]}/edit"%>>ACCOUNT</a></li>
-      <li><a href="/logout">LOGOUT</a></li>
-    <% end %>
-  </ul>
-<!--   <form id="searchbox" action="">
-    <input id="search" type="text" placeholder="Type here">
-    <input id="submit" type="submit" value="SEARCH">
-</form> -->
-
-  </nav>
-
+  <% if current_user %>
+    <div class="navbar">
+      <ul>
+        <li><a href="/dashboard">HOME</a></li>
+        <li><a href=<%="/users/#{session[:user_id]}/edit"%>>ACCOUNT</a></li>
+        <li><a href="/logout">LOGOUT</a></li>
+      </ul>
+      <form action='/users/search' method="get">
+        <input class="search-box" type="string" name="name" placeholder="search user">
+        <input type="submit" value="SEARCH">
+      </form>
+    </div>
+  <% end %>
+  <div class="content">
   <%= yield %>
-  <footer>
-    Made by Kiope Gyzen
-  </footer>
+</div>
+
+<footer>
+ <p> by kiope gyzen </p>
+</footer>
 </body>
 </html>

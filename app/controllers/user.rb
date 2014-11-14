@@ -4,9 +4,11 @@ post '/login' do
     if @user.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect '/'
+    else
+       erb :error, :locals => {:message => "Incorrect password."}
     end
   else
-    erb :error, :locals => {:message => "We don't have that email and password combo in our system."}
+    erb :error, :locals => {:message => "We don't have that email in our system."}
   end
 end
 
@@ -32,6 +34,12 @@ post '/users/new' do
   end
 end
 
+get '/users/search' do
+  @results = User.where("#{:name} LIKE (?)", "%#{params[:name]}%")
+  erb :search_results
+end
+
+
 get '/users/:user_id/edit' do
   @user = User.find(params[:user_id])
   erb :'user/user_edit'
@@ -40,6 +48,7 @@ end
 put '/users/:user_id/edit' do
   user = User.find(params[:user_id])
   user.update_attributes(params[:user])
+  user.update_attributes(:password_hash => BCrypt::Password.create(params[:password]))
   redirect '/'
 end
 

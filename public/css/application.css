@@ -1,116 +1,270 @@
+html {
+  background: url('http://i.huffpost.com/gen/1094377/thumbs/o-COFFEE-TEA-TASTE-facebook.jpg') no-repeat center center fixed;
+}
 body {
-  font-family: Arial;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  font-family: Times;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  font-family: 'Open Sans Condensed', sans-serif;
+  background-color: white;
 }
 
 body a:link {
   text-decoration: none;
+  color:brown;
 }
 
 body a:visited {
-  color: brown;
-}
-
-.container {
-  margin: 2%;
-  padding: 2%;
-  border: 4px solid black;
-  background-size: 700px;
-  background-repeat: no-repeat;
-}
-
-.welcome {
-  margin: 2%;
-  background-size: 700px;
-  background-repeat: no-repeat;
-  font-size: 100px;
-/*  font-family: 'Patrick Hand SC', cursive;
-*/}
-
-.sub-welcome {
-  font-size: 20px;
-}
-
-
-#chapter-content {
-  margin: 3% 15% 3% 15%;
-  padding: 2%;
-  background-color: white;
-  border: 5px solid SkyBlue;
-  font-size: 20px;
-}
-
-.chapter-header {
-  background-color: white;
-  text-align: center;
-  margin: 5% 20% 0 20%;
-  padding: 2%;
-  font-size: 40px;
-  font-family: Times;
-}
-
-nav {
-  border: 1px solid black;
-  font-size: 20px;
-}
-
-nav ul {
-  display: inline;
-}
-
-nav ul li {
-  display: inline;
-  padding: 1px 5px 1px 5px;
-}
-
-nav ul li a:link {
   text-decoration: none;
-  color: gray;
+  color:brown;
 }
 
-nav ul li a:visited {
+.welcome-container {
+  margin-top: 20%;
+}
+
+.header {
+  height: 9em;
+  padding: .25em 0 .5em 0;
+}
+
+.brand {
+  font-size: 6em;
+  text-align: center;
+  font-family: 'PT Sans Narrow', sans-serif;
+}
+
+.tagline {
+  font-size: 1.25em;
+  text-align: center;
+  font-family: 'PT Sans Narrow', sans-serif;
+}
+
+.navbar {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: .5em;
+  font-family: 'PT Sans Narrow', sans-serif;
+  border-top: 5px solid gray;
+}
+
+.navbar ul {
+  float: left;
+}
+
+.navbar ul li {
+  display: inline;
+  text-decoration: none;
+  padding-right: .5em;
+  font-size: 1em;
+}
+
+.navbar ul li a:link {
+  text-decoration: none;
   color: black;
 }
 
-nav ul li a:hover {
+.navbar ul li a:visited {
   color: brown;
 }
-#chapter-input {
-  height: 300px;
-  width: 500px;
+
+.navbar form {
+  margin-top: .8em;
+  margin-right: 2em;
+  float: right;
 }
 
-#comment-input {
-  height: 100px;
-  width: 400px;
+.content {
+  margin-top: 1em;
+  clear: both;
+  margin-left: 5%;
+  margin-right: 5%;
+  border-top: 5px solid gray;
 }
 
-#searchbox {
-  display: inline;
+.search-box {
+  width: 100px;
+}
+
+.greeting {
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 2% 0 1% 0;
+  font-size: 2em;
+  border-bottom: 2px solid gray;
+}
+
+.your-stories {
+  padding: 1% 1% 1% 5%;
+  width: 45%;
+  float: right;
+}
+
+.notifications {
+  border-bottom: 2px solid gray;
+  padding: 1%;
+  width: 40%;
+  margin-left: 5%;
+}
+
+.notifications a:link {
+  text-decoration: none;
+  color: brown;
+  font-size: .75em;
+}
+
+.notifications a:visited {
+  color: gray;
+}
+
+.notifications a:hover {
+  font-size: .8em;
+}
+
+.partners {
+  float:left;
+  clear:both;
+  border-bottom: 2px solid gray;
+  margin-left: 5%;
+  width: 40%;
+  padding: 1%;
+}
+
+.partners ul {
+  list-style-type: circle;
+}
+
+.partners a:link {
+  text-decoration: none;
+  color: SkyBlue;
+  font-size: 1em;
+}
+
+.partners a:hover {
+  text-decoration: none;
+  color: brown;
+  font-size: 1.25em;
+}
+
+.partners a:visited {
+  color: gray;
+}
+
+.music-player {
+  border: 8px solid gray;
+}
+
+.topic-heading {
+  font-size: 1.5em;
+  font-family: 'PT Sans Narrow', sans-serif;
+  color: brown;
+}
+
+.start-story {
+  color: brown;
+  background-color: white;
+  margin-left: 5%;
+}
+
+.your-stories ol a:link {
+  text-decoration: none;
+  color: SkyBlue;
+  font-size: 1em;
+}
+
+.your-stories ol a:visited {
+  color: gray;
 }
 
 .quote {
-  width: 200px;
-  font-style: italic;
-  border: 1px solid gray;
-  margin: 5px;
-  padding: 10px;
+  clear:both;
+  float:left;
+  width: 40%;
+  padding: 2% 0 2% 2%;
+  font-size: .75em;
+  margin-left: 5%;
 }
 
-footer {
-  font-size: 15px;
-  height: 40px;
+.quote a:link{
+  color: brown;
+  text-decoration: none;
+}
+
+.login-box {
   text-align: center;
 }
 
-.bio-box {
-  width: 200px;
-  font-style: italic;
-  border: 5px solid gray;
-  margin: 5px;
-  padding: 10px;
+.login-box a:link {
+  text-decoration: none;
+  color: brown;
 }
 
+.login-box a:visited {
+  color: brown;
+}
+
+.author-name {
+  font-size: 3em;
+}
+
+.member-since {
+  margin-left: 1em;
+  font-size: .75em;
+}
+
+.chapter-title {
+  font-size: 2em;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.chapter-container {
+  margin: 2%;
+}
+
+.chapter-content {
+  margin-bottom: 2%;
+}
+
+.comment-box {
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+
+.friend-request {
+  margin: 5%;
+}
+footer {
+  border-top: 2px solid gray;
+  height: 2em;
+  padding-bottom: 1em;
+  text-align: center;
+  font-size: .75em;
+  color: gray;
+  font-family: 'Oswald', sans-serif;
+}
+
+@media (max-width: 800px) {
+
+  body {
+    min-width: 500px;
+  }
+  .header {
+    height: 5em;
+    padding: .15em;
+  }
+
+  .brand {
+    font-size: 3em;
+  }
+
+  .tagline {
+    font-size: 1em;
+  }
+
+  .navbar form {
+    margin-top: .8em;
+    margin-right: 2em;
+    float: right;
+  }
+}

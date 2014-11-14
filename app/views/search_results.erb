@@ -1,0 +1,8 @@
+<div class="container">
+  <h3>USERS FOUND</h3>
+<ol>
+  <% @results.each do |user| %>
+  <li><a href="/users/<%=user.id %>"><%=user.name%></a></li>
+  <% end %>
+</ol>
+</div>

@@ -1,22 +1,28 @@
-<div class="container">
 
-  <div class="chapter-header"><em> <%= "#{@chapter.title}" %></em></div>
+  <div class="chapter-title"><em> <%= "#{@chapter.title}" %></em></div>
 
-  <div id="chapter-content">
+  <div class="chapter-content">
     <%= @chapter.content %>
   </div>
 
-  <h3>Comments:</h3>
-  <ul>
-  <% @chapter.comments.each do |comment| %>
-    <li><a href=<%="/stories/#{@story.id}/chapters/#{@chapter.id}/comments/#{comment.id}"%>><%= comment.content %></a> -- <%= comment.user.name %> </li>
-  <% end %>
-  </ul>
+  <div class="comment-box">
 
-  <a href=<%="/stories/#{@story.id}/chapters/#{@chapter.id}/edit"%>>Edit Chapter</a>
+    <h3>Comments:</h3>
+    <ul>
+    <% @chapter.comments.each do |comment| %>
+      <li><a href=<%="/stories/#{@story.id}/chapters/#{@chapter.id}/comments/#{comment.id}"%>><%= comment.content %></a> -- <%= comment.user.name %> </li>
+    <% end %>
+    </ul>
+  </div>
+
+  <form action="<%="/stories/#{@story.id}/chapters/#{@chapter.id}/edit"%>">
+      <input type="submit" value ="Edit Chapter"</input>
+    </form>
   <form action=<%="/stories/#{@story.id}/chapters/#{@chapter.id}/delete"%> method="post">
     <input type="hidden" name="_method" value="delete"></input>
     <button type="submit">Delete Chapter</button>
   </form>
-  <a href=<%="/stories/#{@story.id}"%>>Back to Story</a>
+  <form action="<%="/stories/#{@story.id}"%>">
+      <input type="submit" value ="Back to Story"</input>
+    </form>
 </div>
