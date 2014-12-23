@@ -1,5 +1,3 @@
-
-
 get '/stories/new' do
   erb :'story/story_new'
 end

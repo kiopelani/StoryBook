@@ -38,5 +38,5 @@ get '/soundcloud/get_user_playlist' do
     end
   end
   user.update_attributes(:playlist => playlist_uri)
-  redirect '/dashboard'
+  redirect '/'
 end

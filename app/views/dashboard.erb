@@ -1,5 +1,4 @@
-
-<div class="greeting">Welcome back, <%=@user.name%>!</div>
+<div class="greeting">Hello <%=@user.name%>!</div>
 
 <div class="your-stories">
     <div class="topic-heading">YOUR STORIES</div>
@@ -42,5 +41,5 @@
 
 
   </script>
-  <iframe class="iframe" width="100%" height="350" scrolling="no" frameborder="no" src=<%="https://w.soundcloud.com/player/?url=#{@user.playlist}"%>>
+  <iframe width="100%" height="350" scrolling="no" frameborder="no" src=<%="https://w.soundcloud.com/player/?url=#{@user.playlist}"%>>
   </iframe>

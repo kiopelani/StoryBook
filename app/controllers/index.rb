@@ -1,5 +1,4 @@
-
-require 'pony'
+# require 'pony'
 
 get '/' do
   if current_user
