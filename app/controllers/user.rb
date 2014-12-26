@@ -53,9 +53,10 @@ put '/users/:user_id/edit' do
 end
 
 get '/users/:user_id/delete' do
-  Story.where(:user_id => params[:user_id]).delete
-  User.find(params[:user_id]).delete
-  redirect '/logout'
+  "Users cannot be deleted at this time"
+  # Story.where(:user_id => params[:user_id]).delete
+  # User.find(params[:user_id]).delete
+  # redirect '/logout'
 end
 
 get '/users/:user_id' do
