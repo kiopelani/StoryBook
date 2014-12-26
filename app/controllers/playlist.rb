@@ -7,14 +7,14 @@ end
 get '/soundcloud' do
   client = Soundcloud.new(:client_id => ENV["CLIENT_ID"],
                         :client_secret => ENV["CLIENT_SECRET"],
-                        :redirect_uri => 'http://localhost:9393/authentication')
+                        :redirect_uri => 'http://storybook-kiope.herokuapp.com/authentication')
   redirect client.authorize_url
 end
 
 get '/authentication' do
    client = Soundcloud.new(:client_id => ENV["CLIENT_ID"],
                         :client_secret => ENV["CLIENT_SECRET"],
-                        :redirect_uri => 'http://localhost:9393/authentication')
+                        :redirect_uri => 'http://storybook-kiope.herokuapp.com/authentication')
   code = params[:code]
   user_access_token = client.exchange_token(:code => code)
   user = User.find(session[:user_id])
